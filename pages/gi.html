@@ -6,7 +6,6 @@
 
     <title>Suíça | Viajar & Chat</title>
 
-    <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
@@ -15,17 +14,12 @@
       rel="stylesheet"
     />
 
-    <!-- ICONS -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
 
     <style>
-      /* =========================================
-       RESET
-    ========================================= */
-
       * {
         margin: 0;
         padding: 0;
@@ -43,10 +37,6 @@
         text-decoration: none;
         color: white;
       }
-
-      /* =========================================
-       BACKGROUND
-    ========================================= */
 
       .background {
         position: fixed;
@@ -74,10 +64,6 @@
         );
       }
 
-      /* =========================================
-       SIDEBAR
-    ========================================= */
-
       .sidebar {
         position: fixed;
 
@@ -96,8 +82,6 @@
         border-right: 1px solid rgba(255, 255, 255, 0.06);
       }
 
-      /* LOGO */
-
       .logo {
         display: flex;
         align-items: center;
@@ -115,8 +99,6 @@
         font-size: 25px;
         line-height: 1.1;
       }
-
-      /* BUTTON */
 
       .new-chat {
         width: 100%;
@@ -141,8 +123,6 @@
       .new-chat:hover {
         background: #ac7dff;
       }
-
-      /* MENU */
 
       .menu-title {
         color: #bcbcbc;
@@ -188,8 +168,6 @@
         object-fit: cover;
       }
 
-      /* SIDEBAR BOTTOM */
-
       .sidebar-bottom {
         position: absolute;
 
@@ -216,18 +194,10 @@
         color: #9b5cff;
       }
 
-      /* =========================================
-       MAIN
-    ========================================= */
-
       .main {
         margin-left: 250px;
         padding: 30px 34px;
       }
-
-      /* =========================================
-       NAVBAR
-    ========================================= */
 
       .navbar {
         display: flex;
@@ -261,10 +231,6 @@
         width: 100%;
       }
 
-      /* =========================================
-       GRID
-    ========================================= */
-
       .container {
         display: grid;
 
@@ -272,10 +238,6 @@
 
         gap: 18px;
       }
-
-      /* =========================================
-       HERO
-    ========================================= */
 
       .hero {
         position: relative;
@@ -347,10 +309,6 @@
         color: #dddddd;
       }
 
-      /* =========================================
-       INFO CARDS
-    ========================================= */
-
       .info-grid {
         display: grid;
 
@@ -390,17 +348,11 @@
         font-size: 14px;
       }
 
-      /* =========================================
-       RIGHT COLUMN
-    ========================================= */
-
       .side-column {
         display: flex;
         flex-direction: column;
         gap: 18px;
       }
-
-      /* SECTION CARD */
 
       .section-card {
         background: rgba(0, 0, 0, 0.28);
@@ -450,10 +402,6 @@
         object-fit: cover;
       }
 
-      /* =========================================
-       LOWER GRID
-    ========================================= */
-
       .lower-grid {
         display: grid;
 
@@ -463,8 +411,6 @@
 
         margin-top: 18px;
       }
-
-      /* MOTIVO */
 
       .reason img {
         width: 100%;
@@ -476,8 +422,6 @@
 
         margin-top: 20px;
       }
-
-      /* TOURISM */
 
       .tourism-grid {
         display: grid;
@@ -514,8 +458,6 @@
         font-size: 13px;
         line-height: 1.5;
       }
-
-      /* LINKS */
 
       .links {
         display: flex;
@@ -568,8 +510,6 @@
   </head>
 
   <body>
-    <!-- BACKGROUND -->
-
     <div class="background">
       <img
         src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1974&auto=format&fit=crop"
@@ -577,8 +517,6 @@
     </div>
 
     <div class="overlay"></div>
-
-    <!-- SIDEBAR -->
 
     <aside class="sidebar">
       <div class="logo">
@@ -639,11 +577,7 @@
       </div>
     </aside>
 
-    <!-- MAIN -->
-
     <main class="main">
-      <!-- NAVBAR -->
-
       <nav class="navbar">
         <a href="#">Início</a>
         <a href="#">Destinos</a>
@@ -651,14 +585,8 @@
         <a href="#">Sobre</a>
       </nav>
 
-      <!-- GRID -->
-
       <div class="container">
-        <!-- LEFT -->
-
         <div>
-          <!-- HERO -->
-
           <section class="hero">
             <div class="hero-content">
               <a href="#" class="back"> ← Voltar aos destinos </a>
@@ -675,8 +603,6 @@
               </p>
             </div>
           </section>
-
-          <!-- INFO GRID -->
 
           <div class="info-grid">
             <div class="mini-card">
@@ -713,11 +639,7 @@
           </div>
         </div>
 
-        <!-- RIGHT -->
-
         <div class="side-column">
-          <!-- SOBRE -->
-
           <section class="section-card">
             <div class="section-title">
               <i class="fa-solid fa-location-dot"></i>
@@ -739,8 +661,6 @@
               />
             </div>
           </section>
-
-          <!-- DESCRIÇÃO -->
 
           <section class="section-card">
             <div class="section-title">
@@ -766,11 +686,7 @@
         </div>
       </div>
 
-      <!-- LOWER GRID -->
-
       <div class="lower-grid">
-        <!-- MOTIVO -->
-
         <section class="section-card reason">
           <div class="section-title">
             <i class="fa-regular fa-star"></i>
@@ -789,8 +705,6 @@
             src="https://images.unsplash.com/photo-1491557345352-5929e343eb89?q=80&w=1974&auto=format&fit=crop"
           />
         </section>
-
-        <!-- TURISMO -->
 
         <section class="section-card">
           <div class="section-title">
@@ -861,8 +775,6 @@
             </div>
           </div>
         </section>
-
-        <!-- LINKS -->
 
         <section class="section-card">
           <div class="section-title">
