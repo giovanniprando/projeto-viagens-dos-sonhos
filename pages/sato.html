@@ -1,0 +1,938 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>China | Viajar & Chat</title>
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ICONS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <style>
+      /* =========================================
+       RESET
+    ========================================= */
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: #050816;
+        color: white;
+        overflow-x: hidden;
+      }
+
+      a {
+        text-decoration: none;
+        color: white;
+      }
+
+      /* =========================================
+       BACKGROUND
+    ========================================= */
+
+      .background {
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+      }
+
+      .background img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(25%);
+      }
+
+      .overlay {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+
+        background: linear-gradient(
+          90deg,
+          rgba(2, 5, 20, 0.96) 15%,
+          rgba(2, 5, 20, 0.75) 45%,
+          rgba(2, 5, 20, 0.4) 100%
+        );
+      }
+
+      /* =========================================
+       SIDEBAR
+    ========================================= */
+
+      .sidebar {
+        position: fixed;
+
+        left: 0;
+        top: 0;
+
+        width: 250px;
+        height: 100vh;
+
+        padding: 28px 22px;
+
+        background: rgba(0, 0, 0, 0.35);
+
+        backdrop-filter: blur(12px);
+
+        border-right: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      /* LOGO */
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+
+        margin-bottom: 42px;
+      }
+
+      .logo i {
+        font-size: 28px;
+        color: #9b5cff;
+      }
+
+      .logo h1 {
+        font-size: 25px;
+        line-height: 1.1;
+      }
+
+      /* BUTTON */
+
+      .new-chat {
+        width: 100%;
+        height: 56px;
+
+        border: none;
+        border-radius: 15px;
+
+        background: #9b5cff;
+        color: white;
+
+        font-size: 17px;
+        font-weight: 500;
+
+        cursor: pointer;
+
+        transition: 0.3s;
+
+        margin-bottom: 40px;
+      }
+
+      .new-chat:hover {
+        background: #ac7dff;
+      }
+
+      /* MENU */
+
+      .menu-title {
+        color: #bcbcbc;
+        margin-bottom: 18px;
+        font-size: 15px;
+      }
+
+      .countries {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .country {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+
+        padding: 15px;
+
+        border-radius: 14px;
+
+        transition: 0.3s;
+      }
+
+      .country:hover {
+        background: rgba(155, 92, 255, 0.15);
+      }
+
+      .country.active {
+        background: linear-gradient(
+          90deg,
+          rgba(155, 92, 255, 0.4),
+          rgba(155, 92, 255, 0.1)
+        );
+      }
+
+      .country img {
+        width: 28px;
+        height: 28px;
+
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      /* SIDEBAR BOTTOM */
+
+      .sidebar-bottom {
+        position: absolute;
+
+        left: 22px;
+        right: 22px;
+        bottom: 40px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+      }
+
+      .bottom-item {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+
+        color: #d7d7d7;
+
+        transition: 0.3s;
+      }
+
+      .bottom-item:hover {
+        color: #9b5cff;
+      }
+
+      /* =========================================
+       MAIN
+    ========================================= */
+
+      .main {
+        margin-left: 250px;
+        padding: 30px 34px;
+      }
+
+      /* =========================================
+       NAVBAR
+    ========================================= */
+
+      .navbar {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+
+        margin-bottom: 35px;
+      }
+
+      .navbar a {
+        font-size: 17px;
+        position: relative;
+      }
+
+      .navbar a::after {
+        content: "";
+
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+
+        width: 0%;
+        height: 2px;
+
+        background: #9b5cff;
+
+        transition: 0.3s;
+      }
+
+      .navbar a:hover::after {
+        width: 100%;
+      }
+
+      /* =========================================
+       GRID
+    ========================================= */
+
+      .container {
+        display: grid;
+
+        grid-template-columns: 1.1fr 1fr;
+
+        gap: 18px;
+      }
+
+      /* =========================================
+       HERO
+    ========================================= */
+
+      .hero {
+        position: relative;
+
+        height: 420px;
+
+        border-radius: 28px;
+        overflow: hidden;
+
+        padding: 34px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+
+        background: url("https://i0.wp.com/www.exoticca.com/wp-content/uploads/2019/05/Tradiciones-y-costumbres-chinas-que-te-sorprenderan-1.jpg?fit=1000%2C706&ssl=1");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .hero::before {
+        content: "";
+
+        position: absolute;
+        inset: 0;
+
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.82));
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+      }
+
+      .back {
+        color: #b87cff;
+
+        margin-bottom: 20px;
+
+        display: inline-block;
+      }
+
+      .title {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+
+        margin-bottom: 18px;
+      }
+
+      .title img {
+        width: 86px;
+        height: 86px;
+        object-fit: cover;
+
+        border-radius: 18px;
+      }
+
+      .title h2 {
+        font-size: 74px;
+        line-height: 1;
+      }
+
+      .hero p {
+        max-width: 620px;
+
+        font-size: 23px;
+        line-height: 1.6;
+
+        color: #dddddd;
+      }
+
+      /* =========================================
+       INFO CARDS
+    ========================================= */
+
+      .info-grid {
+        display: grid;
+
+        grid-template-columns: repeat(4, 1fr);
+
+        gap: 14px;
+
+        margin-top: 18px;
+      }
+
+      .mini-card {
+        background: rgba(0, 0, 0, 0.35);
+
+        border: 1px solid rgba(255, 255, 255, 0.06);
+
+        border-radius: 20px;
+
+        padding: 18px;
+      }
+
+      .mini-card i {
+        color: #9b5cff;
+
+        margin-bottom: 10px;
+
+        font-size: 22px;
+      }
+
+      .mini-card h4 {
+        margin-bottom: 8px;
+        font-size: 15px;
+      }
+
+      .mini-card p {
+        color: #d5d5d5;
+        line-height: 1.5;
+        font-size: 14px;
+      }
+
+      /* =========================================
+       RIGHT COLUMN
+    ========================================= */
+
+      .side-column {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      /* SECTION CARD */
+
+      .section-card {
+        background: rgba(0, 0, 0, 0.28);
+
+        border: 1px solid rgba(255, 255, 255, 0.06);
+
+        backdrop-filter: blur(12px);
+
+        border-radius: 28px;
+
+        padding: 26px;
+      }
+
+      .section-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        margin-bottom: 18px;
+      }
+
+      .section-title i {
+        color: #9b5cff;
+        font-size: 20px;
+      }
+
+      .section-title h3 {
+        font-size: 32px;
+      }
+
+      .section-card-content {
+        display: flex;
+        gap: 20px;
+      }
+
+      .section-card p {
+        color: #d7d7d7;
+        line-height: 1.9;
+        font-size: 16px;
+      }
+
+      .section-card img {
+        width: 380px;
+        height: 180px;
+
+        border-radius: 22px;
+        object-fit: cover;
+      }
+
+      /* =========================================
+       LOWER GRID
+    ========================================= */
+
+      .lower-grid {
+        display: grid;
+
+        grid-template-columns: 1fr 1.5fr 1fr;
+
+        gap: 18px;
+
+        margin-top: 18px;
+      }
+
+      /* MOTIVO */
+
+      .reason img {
+        width: 100%;
+        height: 230px;
+
+        object-fit: cover;
+
+        border-radius: 22px;
+
+        margin-top: 20px;
+      }
+
+      /* TOURISM */
+
+      .tourism-grid {
+        display: grid;
+
+        grid-template-columns: repeat(5, 1fr);
+
+        gap: 14px;
+      }
+
+      .tour-card {
+        background: rgba(255, 255, 255, 0.03);
+
+        border-radius: 18px;
+        overflow: hidden;
+      }
+
+      .tour-card img {
+        width: 100%;
+        height: 140px;
+
+        object-fit: cover;
+      }
+
+      .tour-content {
+        padding: 14px;
+      }
+
+      .tour-content h4 {
+        margin-bottom: 8px;
+      }
+
+      .tour-content p {
+        color: #d5d5d5;
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      /* LINKS */
+
+      .links {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .link-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 14px 16px;
+
+        border-radius: 16px;
+
+        background: rgba(255, 255, 255, 0.03);
+
+        transition: 0.3s;
+      }
+
+      .link-item:hover {
+        background: rgba(155, 92, 255, 0.1);
+      }
+
+      .link-left {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .link-left i {
+        color: #9b5cff;
+      }
+
+      .link-text h5 {
+        margin-bottom: 4px;
+        font-size: 15px;
+      }
+
+      .link-text span {
+        color: #a6a6a6;
+        font-size: 13px;
+      }
+
+      .link-item i.fa-arrow-right {
+        color: #9b5cff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- BACKGROUND -->
+
+    <div class="background">
+      <img
+        src="https://i0.wp.com/www.exoticca.com/wp-content/uploads/2019/05/Tradiciones-y-costumbres-chinas-que-te-sorprenderan-1.jpg?fit=1000%2C706&ssl=1"
+      />
+    </div>
+
+    <div class="overlay"></div>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+      <div class="logo">
+        <i class="fa-solid fa-plane"></i>
+
+        <h1>Viajar & Chat</h1>
+      </div>
+
+      <button class="new-chat">
+        <i class="fa-regular fa-comments"></i>
+        Novo chat
+      </button>
+
+      <p class="menu-title">Destinos</p>
+
+      <div class="countries">
+        <a href="#" class="country">
+          <img src="https://flagcdn.com/w80/ch.png" />
+          <span>Suíça</span>
+        </a>
+
+        <a href="#" class="country">
+          <img src="https://flagcdn.com/w80/fr.png" />
+          <span>França</span>
+        </a>
+
+        <a href="#" class="country">
+          <img src="https://flagcdn.com/w80/jp.png" />
+          <span>Japão</span>
+        </a>
+
+        <a href="#" class="country">
+          <img src="https://flagcdn.com/w80/au.png" />
+          <span>Austrália</span>
+        </a>
+
+        <a href="#" class="country active">
+          <img src="https://flagcdn.com/w80/cn.png" />
+          <span>China</span>
+        </a>
+      </div>
+
+      <div class="sidebar-bottom">
+        <div class="bottom-item">
+          <i class="fa-regular fa-clock"></i>
+          <span>Histórico</span>
+        </div>
+
+        <div class="bottom-item">
+          <i class="fa-regular fa-star"></i>
+          <span>Favoritos</span>
+        </div>
+
+        <div class="bottom-item">
+          <i class="fa-solid fa-gear"></i>
+          <span>Configurações</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+
+    <main class="main">
+      <!-- NAVBAR -->
+
+      <nav class="navbar">
+        <a href="#">Início</a>
+        <a href="#">Destinos</a>
+        <a href="#">Dicas</a>
+        <a href="#">Sobre</a>
+      </nav>
+
+      <!-- GRID -->
+
+      <div class="container">
+        <!-- LEFT -->
+
+        <div>
+          <!-- HERO -->
+
+          <section class="hero">
+            <div class="hero-content">
+              <a href="#" class="back"> ← Voltar aos destinos </a>
+
+              <div class="title">
+                <img src="https://flagcdn.com/w80/cn.png" />
+
+                <h2>China</h2>
+              </div>
+
+              <p>
+                Templos históricos, cidades futuristas, montanhas majestosas,
+                lagos cristalinos e tecnologia avançada.
+              </p>
+            </div>
+          </section>
+
+          <!-- INFO GRID -->
+
+          <div class="info-grid">
+            <div class="mini-card">
+              <i class="fa-solid fa-earth-americas"></i>
+
+              <h4>Idioma</h4>
+
+              <p>Mandarim, Coreano, Inglês e Japonês</p>
+            </div>
+
+            <div class="mini-card">
+              <i class="fa-solid fa-coins"></i>
+
+              <h4>Moeda</h4>
+
+              <p>Yuan (CNY)</p>
+            </div>
+
+            <div class="mini-card">
+              <i class="fa-regular fa-calendar"></i>
+
+              <h4>Melhor época</h4>
+
+              <p>abril a junho e setembro a novembro</p>
+            </div>
+
+            <div class="mini-card">
+              <i class="fa-regular fa-clock"></i>
+
+              <h4>Fuso horário</h4>
+
+              <p>GMT +8</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+
+        <div class="side-column">
+          <!-- SOBRE -->
+
+          <section class="section-card">
+            <div class="section-title">
+              <i class="fa-solid fa-location-dot"></i>
+
+              <h3>Sobre o lugar</h3>
+            </div>
+
+            <div class="section-card-content">
+              <p>
+                A China é um país asiático conhecido por sua rica história
+                milenar, cultura fascinante e impressionante desenvolvimento
+                tecnológico. Combinando tradições antigas e modernidade, é o
+                destino ideal para quem busca paisagens incríveis, cidades
+                futuristas, templos históricos e uma gastronomia cheia de
+                sabores únicos.
+              </p>
+
+              <img
+                src="https://www.portovistos.com.br/wp-content/uploads/2018/05/China.jpg"
+              />
+            </div>
+          </section>
+
+          <!-- DESCRIÇÃO -->
+
+          <section class="section-card">
+            <div class="section-title">
+              <i class="fa-regular fa-file-lines"></i>
+
+              <h3>Descrição do destino</h3>
+            </div>
+
+            <div class="section-card-content">
+              <p>
+                A China oferece experiências únicas que unem tradição e inovação
+                em cada região do país. Suas paisagens variam entre montanhas
+                impressionantes, templos históricos, cidades futuristas e
+                jardins tradicionais, criando cenários inesquecíveis. É um
+                destino ideal para explorar pontos turísticos históricos,
+                experimentar a cultura oriental, conhecer tecnologias modernas e
+                visitar grandes cidades como Pequim, Xangai e Shenzhen.
+              </p>
+
+              <img
+                src="https://americachip.com/wp-content/uploads/2024/07/China.jpg"
+              />
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <!-- LOWER GRID -->
+
+      <div class="lower-grid">
+        <!-- MOTIVO -->
+
+        <section class="section-card reason">
+          <div class="section-title">
+            <i class="fa-regular fa-star"></i>
+
+            <h3>Motivo do porque escolhemos esse lugar</h3>
+          </div>
+
+          <p>
+            Escolhemos a China por sua incrível mistura entre tradição,
+            modernidade e riqueza cultural. É um destino que chama a atenção
+            pela sua história milenar, avanços tecnológicos, paisagens
+            impressionantes e experiências únicas, encantando quem busca
+            conhecer uma cultura diferente e memorável.
+          </p>
+
+          <img
+            src="https://images.ctfassets.net/1u811bvgvthc/4GWJq31QwDzTP3dc0WD1aA/effd508a00032a0c46699f8865e60ed6/china_temple.jpg?fm=jpg&fl=progressive"
+          />
+        </section>
+
+        <!-- TURISMO -->
+
+        <section class="section-card">
+          <div class="section-title">
+            <i class="fa-solid fa-camera"></i>
+
+            <h3>Pontos turísticos</h3>
+          </div>
+
+          <div class="tourism-grid">
+            <div class="tour-card">
+              <img
+                src="https://www.adventureclub.com.br/wp-content/uploads/2021/10/Muralha-da-China-Topo-80.jpg"
+              />
+
+              <div class="tour-content">
+                <h4>Grande Muralha da China</h4>
+
+                <p>história, arquitetura, paisagem</p>
+              </div>
+            </div>
+
+            <div class="tour-card">
+              <img
+                src="https://super.abril.com.br/wp-content/uploads/2018/07/thumb31.jpg?crop=1&resize=1212,909"
+              />
+
+              <div class="tour-content">
+                <h4>Cidade Proibida</h4>
+
+                <p>cultura, império, tradição</p>
+              </div>
+            </div>
+
+            <div class="tour-card">
+              <img
+                src="https://media.tacdn.com/media/attractions-splice-spp-674x446/12/05/8f/f5.jpg"
+              />
+
+              <div class="tour-content">
+                <h4>Templo do Céu</h4>
+
+                <p>espiritualidade, arquitetura, jardins</p>
+              </div>
+            </div>
+
+            <div class="tour-card">
+              <img src="https://thechina.travel/images/chongqing.webp" />
+
+              <div class="tour-content">
+                <h4>chongqing</h4>
+
+                <p>modernidade, neon e montanhas</p>
+              </div>
+            </div>
+
+            <div class="tour-card">
+              <img
+                src="https://aventurasnahistoria.com.br/wp-content/uploads/bizarro/design_sem_nome_42.jpg"
+              />
+
+              <div class="tour-content">
+                <h4>Exército de Terracota</h4>
+
+                <p>arqueologia, guerreiros, história</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- LINKS -->
+
+        <!-- LINKS -->
+
+        <section class="section-card">
+          <div class="section-title">
+            <i class="fa-solid fa-link"></i>
+
+            <h3>Links úteis</h3>
+          </div>
+
+          <div class="links">
+            <a
+              href="https://viagemeturismo.abril.com.br/manual-do-viajante/como-tirar-o-visto-chines-passo-a-passo"
+              target="_blank"
+              class="link-item"
+            >
+              <div class="link-left">
+                <i class="fa-solid fa-globe"></i>
+
+                <div class="link-text">
+                  <h5>Guia de visto para a China - Viagem e Turismo</h5>
+
+                  <span>viagemeturismo.abril.com.br</span>
+                </div>
+              </div>
+
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+            <a
+              href="https://english.www.gov.cn/services/visitchina"
+              target="_blank"
+              class="link-item"
+            >
+              <div class="link-left">
+                <i class="fa-regular fa-id-card"></i>
+
+                <div class="link-text">
+                  <h5>VISIT CHINA — Portal oficial do governo chinês</h5>
+
+                  <span>english.www.gov.cn</span>
+                </div>
+              </div>
+
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+            <a
+              href="https://www.travelchina.org.cn/"
+              target="_blank"
+              class="link-item"
+            >
+              <div class="link-left">
+                <i class="fa-solid fa-train"></i>
+
+                <div class="link-text">
+                  <h5>Travel China — Turismo oficial da China</h5>
+
+                  <span>travelchina.org.cn</span>
+                </div>
+              </div>
+
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
