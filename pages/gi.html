@@ -6,6 +6,7 @@
 
     <title>Suíça | Viajar & Chat</title>
 
+    <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
@@ -14,12 +15,17 @@
       rel="stylesheet"
     />
 
+    <!-- ICONS -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
 
     <style>
+      /* =========================================
+        RESET
+      ========================================= */
+
       * {
         margin: 0;
         padding: 0;
@@ -37,6 +43,10 @@
         text-decoration: none;
         color: white;
       }
+
+      /* =========================================
+        BACKGROUND
+      ========================================= */
 
       .background {
         position: fixed;
@@ -63,6 +73,10 @@
           rgba(2, 5, 20, 0.4) 100%
         );
       }
+
+      /* =========================================
+        SIDEBAR
+      ========================================= */
 
       .sidebar {
         position: fixed;
@@ -100,6 +114,8 @@
         line-height: 1.1;
       }
 
+      /* BUTTON */
+
       .new-chat {
         width: 100%;
         height: 56px;
@@ -123,6 +139,8 @@
       .new-chat:hover {
         background: #ac7dff;
       }
+
+      /* MENU */
 
       .menu-title {
         color: #bcbcbc;
@@ -168,6 +186,8 @@
         object-fit: cover;
       }
 
+      /* SIDEBAR BOTTOM */
+
       .sidebar-bottom {
         position: absolute;
 
@@ -194,10 +214,18 @@
         color: #9b5cff;
       }
 
+      /* =========================================
+        MAIN
+      ========================================= */
+
       .main {
         margin-left: 250px;
         padding: 30px 34px;
       }
+
+      /* =========================================
+        NAVBAR
+      ========================================= */
 
       .navbar {
         display: flex;
@@ -231,6 +259,10 @@
         width: 100%;
       }
 
+      /* =========================================
+        GRID
+      ========================================= */
+
       .container {
         display: grid;
 
@@ -253,7 +285,7 @@
         flex-direction: column;
         justify-content: flex-end;
 
-        background: url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1974&auto=format&fit=crop");
+        background: url("https://viagem.cnnbrasil.com.br/wp-content/uploads/sites/5/2024/03/Toquio-Japao.jpg?w=1200&h=900&crop=0");
         background-size: cover;
         background-position: center;
       }
@@ -289,8 +321,8 @@
       }
 
       .title img {
-        width: 86px;
-        height: 86px;
+        width: 96px;
+        height: 66px;
 
         border-radius: 18px;
       }
@@ -308,6 +340,10 @@
 
         color: #dddddd;
       }
+
+      /* =========================================
+        INFO CARDS
+      ========================================= */
 
       .info-grid {
         display: grid;
@@ -348,11 +384,17 @@
         font-size: 14px;
       }
 
+      /* =========================================
+        RIGHT COLUMN
+      ========================================= */
+
       .side-column {
         display: flex;
         flex-direction: column;
         gap: 18px;
       }
+
+      /* SECTION CARD */
 
       .section-card {
         background: rgba(0, 0, 0, 0.28);
@@ -402,6 +444,10 @@
         object-fit: cover;
       }
 
+      /* =========================================
+        LOWER GRID
+      ========================================= */
+
       .lower-grid {
         display: grid;
 
@@ -411,6 +457,8 @@
 
         margin-top: 18px;
       }
+
+      /* MOTIVO */
 
       .reason img {
         width: 100%;
@@ -422,6 +470,8 @@
 
         margin-top: 20px;
       }
+
+      /* TOURISM */
 
       .tourism-grid {
         display: grid;
@@ -458,6 +508,8 @@
         font-size: 13px;
         line-height: 1.5;
       }
+
+      /* LINKS */
 
       .links {
         display: flex;
@@ -510,19 +562,21 @@
   </head>
 
   <body>
+    <!-- BACKGROUND -->
+
     <div class="background">
       <img
-        src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1974&auto=format&fit=crop"
+        src="https://viagem.cnnbrasil.com.br/wp-content/uploads/sites/5/2024/03/Toquio-Japao.jpg?w=1200&h=900&crop=0"
       />
     </div>
 
     <div class="overlay"></div>
 
+    <!-- SIDEBAR -->
+
     <aside class="sidebar">
       <div class="logo">
         <i class="fa-solid fa-plane"></i>
-
-        <h1>Viajar & Chat</h1>
       </div>
 
       <button class="new-chat">
@@ -533,7 +587,7 @@
       <p class="menu-title">Destinos</p>
 
       <div class="countries">
-        <a href="#" class="country active">
+        <a href="#" class="country">
           <img src="https://flagcdn.com/w80/ch.png" />
           <span>Suíça</span>
         </a>
@@ -543,7 +597,7 @@
           <span>França</span>
         </a>
 
-        <a href="#" class="country">
+        <a href="#" class="country active">
           <img src="https://flagcdn.com/w80/jp.png" />
           <span>Japão</span>
         </a>
@@ -579,38 +633,33 @@
 
     <main class="main">
       <nav class="navbar">
-        <a href="#">Início</a>
+        <a href="index.html">Início</a>
         <a href="#">Destinos</a>
-        <a href="#">Dicas</a>
-        <a href="#">Sobre</a>
       </nav>
 
       <div class="container">
         <div>
           <section class="hero">
             <div class="hero-content">
-              <a href="#" class="back"> ← Voltar aos destinos </a>
-
               <div class="title">
-                <img src="https://flagcdn.com/w320/ch.png" />
-
-                <h2>Suíça</h2>
+                <img
+                  src="https://images.educamaisbrasil.com.br/content/banco_de_imagens/guia-de-estudo/D/bandeira-do-japao-oficial.jpg"
+                />
+                <h2>Japão</h2>
               </div>
-
               <p>
-                Natureza exuberante, lagos cristalinos, montanhas imponentes e
-                cidades encantadoras.
+                Tecnologia, tradição e paisagens inesquecíveis em um dos
+                destinos mais fascinantes do mundo.
               </p>
             </div>
           </section>
-
           <div class="info-grid">
             <div class="mini-card">
               <i class="fa-solid fa-earth-americas"></i>
 
               <h4>Idioma</h4>
 
-              <p>Alemão, Francês, Italiano e Romanche</p>
+              <p>Japonês, Ryukyuanas e Ainu</p>
             </div>
 
             <div class="mini-card">
@@ -618,7 +667,7 @@
 
               <h4>Moeda</h4>
 
-              <p>Franco Suíço (CHF)</p>
+              <p>Yenes(¥)</p>
             </div>
 
             <div class="mini-card">
@@ -626,7 +675,11 @@
 
               <h4>Melhor época</h4>
 
-              <p>Junho a Setembro</p>
+              <p>
+                primavera (março a maio), para ver as cerejeiras (sakura), ou no
+                outono (setembro a novembro), para apreciar as folhas
+                avermelhadas (koyo)
+              </p>
             </div>
 
             <div class="mini-card">
@@ -634,12 +687,16 @@
 
               <h4>Fuso horário</h4>
 
-              <p>GMT +1</p>
+              <p>GMT+9</p>
             </div>
           </div>
         </div>
 
+        <!-- RIGHT -->
+
         <div class="side-column">
+          <!-- SOBRE -->
+
           <section class="section-card">
             <div class="section-title">
               <i class="fa-solid fa-location-dot"></i>
@@ -649,18 +706,22 @@
 
             <div class="section-card-content">
               <p>
-                A Suíça é um país europeu conhecido por suas paisagens naturais
-                deslumbrantes, qualidade de vida excepcional e organização
-                impecável. Combinando tradição e modernidade, é o destino
-                perfeito para quem busca tranquilidade, aventura, cultura e
-                gastronomia refinada.
+                O Japão é um país asiático conhecido por sua combinação única
+                entre tradição milenar e tecnologia avançada. Com paisagens
+                naturais impressionantes, cidades futuristas e uma cultura rica
+                em história e costumes, o destino encanta visitantes do mundo
+                inteiro. Misturando modernidade, gastronomia renomada e
+                organização exemplar, o Japão é perfeito para quem busca
+                experiências inesquecíveis, aventura e imersão cultural.
               </p>
 
               <img
-                src="https://images.unsplash.com/photo-1527668752968-14dc70a27c95?q=80&w=1974&auto=format&fit=crop"
+                src="https://www.mercadoeeventos.com.br/wp-content/uploads/2022/12/Castelo_de_Himeji_cre%CC%81dito_Pond-Thananat_Shutterstock_com.jpg"
               />
             </div>
           </section>
+
+          <!-- DESCRIÇÃO -->
 
           <section class="section-card">
             <div class="section-title">
@@ -671,22 +732,27 @@
 
             <div class="section-card-content">
               <p>
-                A Suíça oferece experiências únicas durante todo o ano. Seus
-                lagos de águas cristalinas, vilarejos charmosos e os Alpes
-                Suíços criam cenários inesquecíveis. É ideal para atividades ao
-                ar livre como esqui, trilhas, ciclismo e navegação, além de
-                possuir cidades cosmopolitas como Zurique, Genebra e Lucerna.
+                O Japão oferece experiências únicas durante todas as estações do
+                ano. Seus templos históricos, cidades iluminadas e paisagens
+                naturais criam uma combinação perfeita entre tradição e
+                modernidade. O país encanta visitantes com sua culinária famosa,
+                tecnologia avançada, festivais culturais e cenários
+                inesquecíveis, como as cerejeiras floridas e o Monte Fuji.
               </p>
 
               <img
-                src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1974&auto=format&fit=crop"
+                src="https://ipiranganews.inf.br/wp-content/uploads/VIAGEM-3-09-05-23-780x470.jpg"
               />
             </div>
           </section>
         </div>
       </div>
 
+      <!-- LOWER GRID -->
+
       <div class="lower-grid">
+        <!-- MOTIVO -->
+
         <section class="section-card reason">
           <div class="section-title">
             <i class="fa-regular fa-star"></i>
@@ -695,16 +761,20 @@
           </div>
 
           <p>
-            Escolhemos a Suíça por sua combinação perfeita entre natureza,
-            segurança, qualidade de vida e diversidade cultural. É um destino
-            que encanta todos os tipos de viajantes, oferecendo experiências
-            autênticas e memoráveis.
+            Escolhemos o Japão por sua combinação única entre cultura,
+            tecnologia, segurança e paisagens impressionantes. É um destino que
+            consegue unir tradição e modernidade de forma incrível,
+            proporcionando experiências inesquecíveis para qualquer visitante,
+            desde templos históricos até cidades futuristas cheias de vida e
+            inovação.
           </p>
 
           <img
-            src="https://images.unsplash.com/photo-1491557345352-5929e343eb89?q=80&w=1974&auto=format&fit=crop"
+            src="https://blog.assistentedeviagem.com.br/wp-content/uploads/2024/10/o-que-fazer-no-Japao.jpg"
           />
         </section>
+
+        <!-- TURISMO -->
 
         <section class="section-card">
           <div class="section-title">
@@ -716,65 +786,80 @@
           <div class="tourism-grid">
             <div class="tour-card">
               <img
-                src="https://images.unsplash.com/photo-1521295121783-8a321d551ad2?q=80&w=1974&auto=format&fit=crop"
+                src="https://pontospravoar.com/wp-content/uploads/2025/03/fuji-kawaguchiko-lake-japan.png"
               />
 
               <div class="tour-content">
-                <h4>Matterhorn</h4>
+                <h4>Monte Fuji</h4>
 
-                <p>Montanha icônica dos Alpes.</p>
+                <p>
+                  Montanha símbolo do Japão e uma das paisagens mais famosas do
+                  mundo.
+                </p>
               </div>
             </div>
 
             <div class="tour-card">
               <img
-                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1974&auto=format&fit=crop"
+                src="https://www.civitatis.com/blog/wp-content/uploads/2022/11/calle-akihabara-tokio.jpg"
               />
 
               <div class="tour-content">
-                <h4>Lago de Genebra</h4>
+                <h4>Tóquio</h4>
 
-                <p>Beleza natural e paisagens incríveis.</p>
+                <p>
+                  Cidade futurista com tecnologia, cultura e entretenimento.
+                </p>
               </div>
             </div>
 
             <div class="tour-card">
               <img
-                src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1974&auto=format&fit=crop"
+                src="https://www.royalcaribbean.com/media-assets/pmc/content/dam/excalibur/digital-stock/royalty-free/shutterstock/2024/12/stock-photo-sunset-osaka-castle-osaka-japan-asia-377260489.jpg?w=1024"
               />
 
               <div class="tour-content">
-                <h4>Interlaken</h4>
+                <h4>Osaka</h4>
 
-                <p>Aventura entre lagos e montanhas.</p>
+                <p>
+                  Conhecida por sua gastronomia, vida noturna e atrações
+                  modernas.
+                </p>
               </div>
             </div>
 
             <div class="tour-card">
               <img
-                src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=1974&auto=format&fit=crop"
+                src="https://shibuyacrossing.org/wp-content/uploads/2024/11/shibuya-crossing-tokyo-japan-night-view-1.jpeg"
               />
 
               <div class="tour-content">
-                <h4>Lucerna</h4>
+                <h4>Shibuya Crossing</h4>
 
-                <p>História, cultura e arquitetura.</p>
+                <p>
+                  Um dos cruzamentos mais movimentados e icônicos do planeta.
+                </p>
               </div>
             </div>
 
             <div class="tour-card">
               <img
-                src="https://images.unsplash.com/photo-1527668752968-14dc70a27c95?q=80&w=1974&auto=format&fit=crop"
+                src="https://danae-explore.com/wp-content/uploads/2024/09/Quioto-62a.jpg"
               />
 
               <div class="tour-content">
-                <h4>Zurique</h4>
+                <h4>Kyoto</h4>
 
-                <p>Cidade moderna e vibrante.</p>
+                <p>
+                  Templos históricos, tradição japonesa e belas paisagens
+                  culturais.
+                </p>
               </div>
             </div>
           </div>
         </section>
+
+        <!-- LINKS -->
 
         <section class="section-card">
           <div class="section-title">
@@ -784,42 +869,45 @@
           </div>
 
           <div class="links">
-            <a href="#" class="link-item">
+            <a href="https://www.japan.travel/pt/br/" class="link-item">
               <div class="link-left">
                 <i class="fa-solid fa-globe"></i>
 
                 <div class="link-text">
                   <h5>Site oficial de turismo</h5>
 
-                  <span>myswitzerland.com</span>
+                  <span>Japan.travel</span>
                 </div>
               </div>
 
               <i class="fa-solid fa-arrow-right"></i>
             </a>
 
-            <a href="#" class="link-item">
+            <a
+              href="https://www.br.emb-japan.go.jp/itpr_pt/visto.html"
+              class="link-item"
+            >
               <div class="link-left">
                 <i class="fa-regular fa-id-card"></i>
 
                 <div class="link-text">
                   <h5>Informações sobre vistos</h5>
 
-                  <span>admin.ch</span>
+                  <span>japan.go</span>
                 </div>
               </div>
 
               <i class="fa-solid fa-arrow-right"></i>
             </a>
 
-            <a href="#" class="link-item">
+            <a href="https://www.japan-guide.com/e/e627.html" class="link-item">
               <div class="link-left">
                 <i class="fa-solid fa-train"></i>
 
                 <div class="link-text">
                   <h5>Transporte público</h5>
 
-                  <span>sbb.ch</span>
+                  <span>japan.guide</span>
                 </div>
               </div>
 
