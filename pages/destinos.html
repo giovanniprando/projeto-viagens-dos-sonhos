@@ -22,455 +22,287 @@
     />
 
     <style>
-      /* =========================================
-       RESET
-    ========================================= */
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        background: #050816;
-        color: white;
-        overflow-x: hidden;
-        min-height: 100vh;
-
-        font-family: "Poppins", sans-serif;
-      }
-
-      h1,
-      h2,
-      h3,
-      h4,
-      h5 {
-        font-family: "Outfit", sans-serif;
-      }
-
-      a {
-        text-decoration: none;
-        color: white;
-      }
-
-      /* =========================================
-       BACKGROUND
-    ========================================= */
-
-      .background {
-        position: fixed;
-        inset: 0;
-        z-index: -2;
-      }
-
-      .background img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        filter: brightness(18%);
-      }
-
-      .overlay {
-        position: fixed;
-        inset: 0;
-        z-index: -1;
-
-        background: linear-gradient(
-          90deg,
-          rgba(2, 5, 20, 0.96) 15%,
-          rgba(2, 5, 20, 0.78) 45%,
-          rgba(2, 5, 20, 0.45) 100%
-        );
-      }
-
-      /* =========================================
-       SIDEBAR
-    ========================================= */
-
-      .sidebar {
-        position: fixed;
-        left: 0;
-        top: 0;
-
-        width: 250px;
-        height: 100vh;
-
-        padding: 28px 22px;
-
-        background: rgba(0, 0, 0, 0.35);
-
-        backdrop-filter: blur(12px);
-
-        border-right: 1px solid rgba(255, 255, 255, 0.06);
-
-        z-index: 100;
-      }
-
-      .logo {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-
-        margin-bottom: 42px;
-      }
-
-      .logo i {
-        font-size: 28px;
-        color: #9b5cff;
-      }
-
-      .logo h1 {
-        font-size: 22px;
-        line-height: 1.1;
-        font-weight: 700;
-        letter-spacing: -1px;
-      }
-
-      .menu-title {
-        color: #bcbcbc;
-        margin-bottom: 18px;
-        font-size: 13px;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-      }
-
-      .countries {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .country {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-
-        padding: 14px;
-
-        border-radius: 16px;
-
-        transition: 0.3s;
-
-        color: #d8d8d8;
-      }
-
-      .country:hover {
-        background: rgba(155, 92, 255, 0.15);
-        color: white;
-      }
-
-      .country img {
-        width: 28px;
-        height: 28px;
-
-        border-radius: 50%;
-        object-fit: cover;
-      }
-
-      .sidebar-bottom {
-        position: absolute;
-
-        left: 22px;
-        right: 22px;
-        bottom: 40px;
-
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-      }
-
-      .bottom-item {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-
-        color: #d7d7d7;
-
-        transition: 0.3s;
-      }
-
-      .bottom-item:hover {
-        color: #9b5cff;
-      }
-
-      /* =========================================
-       MAIN
-    ========================================= */
-
-      .main {
-        margin-left: 250px;
-        padding: 35px 40px 60px;
-      }
-
-      /* =========================================
-       NAVBAR
-    ========================================= */
-
-      .navbar {
-        display: flex;
-        justify-content: center;
-        gap: 50px;
-
-        margin-bottom: 55px;
-      }
-
-      .navbar a {
-        position: relative;
-
-        color: rgba(255, 255, 255, 0.7);
-
-        transition: 0.3s;
-      }
-
-      .navbar a:hover,
-      .navbar a.active {
-        color: white;
-      }
-
-      .navbar a::after {
-        content: "";
-
-        position: absolute;
-        left: 0;
-        bottom: -8px;
-
-        width: 0%;
-        height: 2px;
-
-        background: #9b5cff;
-
-        transition: 0.3s;
-      }
-
-      .navbar a:hover::after,
-      .navbar a.active::after {
-        width: 100%;
-      }
-
-      /* =========================================
-       HEADER
-    ========================================= */
-
-      .page-header {
-        text-align: center;
-        margin-bottom: 55px;
-      }
-
-      .page-header h2 {
-        font-size: 72px;
-        font-weight: 700;
-
-        line-height: 1;
-
-        letter-spacing: -3px;
-
-        margin-bottom: 12px;
-
-        background: linear-gradient(135deg, #ffffff 35%, #9b5cff 100%);
-
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
-      .page-header p {
-        color: #bcbcbc;
-        font-size: 17px;
-        font-weight: 300;
-      }
-
-      /* =========================================
-       GRID
-    ========================================= */
-
-      .cards-grid {
-        display: grid;
-
-        grid-template-columns: repeat(3, 1fr);
-
-        gap: 30px;
-
-        width: 100%;
-      }
-
-      /* =========================================
-       CARD
-    ========================================= */
-
-      .dest-card {
-        position: relative;
-
-        height: 340px;
-
-        border-radius: 30px;
-
-        overflow: hidden;
-
-        border: 1px solid rgba(255, 255, 255, 0.08);
-
-        background: rgba(255, 255, 255, 0.04);
-
-        backdrop-filter: blur(12px);
-
-        transition: 0.45s ease;
-      }
-
-      .dest-card:hover {
-        transform: translateY(-10px) scale(1.02);
-
-        border-color: rgba(155, 92, 255, 0.4);
-
-        box-shadow:
-          0 20px 45px rgba(0, 0, 0, 0.6),
-          0 0 30px rgba(155, 92, 255, 0.2);
-      }
-
-      .card-photo {
-        position: absolute;
-        inset: 0;
-      }
-
-      .card-photo img {
-        width: 100%;
-        height: 100%;
-
-        object-fit: cover;
-
-        transition: 0.6s ease;
-      }
-
-      .dest-card:hover .card-photo img {
-        transform: scale(1.08);
-      }
-
-      .card-overlay {
-        position: absolute;
-        inset: 0;
-
-        background: linear-gradient(
-          to top,
-          rgba(5, 8, 22, 0.98) 5%,
-          rgba(5, 8, 22, 0.72) 45%,
-          rgba(5, 8, 22, 0.15) 100%
-        );
-      }
-
-      .flag {
-        position: absolute;
-
-        top: 20px;
-        left: 20px;
-
-        width: 56px;
-        height: 56px;
-
-        border-radius: 50%;
-
-        overflow: hidden;
-
-        border: 2px solid rgba(255, 255, 255, 0.18);
-
-        z-index: 3;
-      }
-
-      .flag img {
-        width: 100%;
-        height: 100%;
-
-        object-fit: cover;
-      }
-
-      .card-content {
-        position: absolute;
-
-        left: 0;
-        right: 0;
-        bottom: 0;
-
-        z-index: 3;
-
-        padding: 28px;
-      }
-
-      .card-content h3 {
-        font-size: 42px;
-        font-weight: 700;
-
-        line-height: 1;
-
-        letter-spacing: -2px;
-
-        margin-bottom: 12px;
-
-        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
-      }
-
-      .card-content p {
-        color: #d7d7d7;
-
-        line-height: 1.8;
-
-        font-size: 15px;
-
-        font-weight: 300;
-
-        margin-bottom: 20px;
-      }
-
-      .card-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-
-        padding: 11px 18px;
-
-        border-radius: 999px;
-
-        background: rgba(155, 92, 255, 0.18);
-
-        border: 1px solid rgba(155, 92, 255, 0.35);
-
-        color: #d8c2ff;
-
-        transition: 0.3s;
-      }
-
-      .dest-card:hover .card-btn {
-        background: #9b5cff;
-        color: white;
-      }
-
-      /* =========================================
-       RESPONSIVO
-    ========================================= */
-
-      @media (max-width: 1200px) {
-        .cards-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-
-      @media (max-width: 900px) {
-        .sidebar {
-          display: none;
-        }
-
-        .main {
-          margin-left: 0;
-          padding: 25px;
-        }
-      }
-
-      @media (max-width: 700px) {
-        .cards-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .page-header h2 {
-          font-size: 48px;
-        }
-      }
-    </style>
+  /* =========================================
+   RESET
+========================================= */
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background: #050816;
+    color: white;
+    overflow-x: hidden;
+    min-height: 100vh;
+    font-family: "Poppins", sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: "Outfit", sans-serif;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+  /* =========================================
+   BACKGROUND
+========================================= */
+
+  .background {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+  }
+
+  .background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(18%);
+  }
+
+  .overlay {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      90deg,
+      rgba(2, 5, 20, 0.96) 15%,
+      rgba(2, 5, 20, 0.78) 45%,
+      rgba(2, 5, 20, 0.45) 100%
+    );
+  }
+
+  /* =========================================
+   MAIN
+========================================= */
+
+  .main {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 35px 40px 60px;
+  }
+
+  /* =========================================
+   NAVBAR
+========================================= */
+
+  .navbar {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-bottom: 55px;
+    width: 100%;
+  }
+
+  .navbar a {
+    position: relative;
+    color: rgba(255, 255, 255, 0.7);
+    transition: 0.3s;
+  }
+
+  .navbar a:hover,
+  .navbar a.active {
+    color: white;
+  }
+
+  .navbar a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 0%;
+    height: 2px;
+    background: #9b5cff;
+    transition: 0.3s;
+  }
+
+  .navbar a:hover::after,
+  .navbar a.active::after {
+    width: 100%;
+  }
+
+  /* =========================================
+   HEADER
+========================================= */
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 55px;
+    width: 100%;
+  }
+
+  .page-header h2 {
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -3px;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #ffffff 35%, #9b5cff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .page-header p {
+    color: #bcbcbc;
+    font-size: 17px;
+    font-weight: 300;
+  }
+
+  /* =========================================
+   GRID
+========================================= */
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* =========================================
+   CARD
+========================================= */
+
+  .dest-card {
+    position: relative;
+    height: 340px;
+    border-radius: 30px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    transition: 0.45s ease;
+  }
+
+  .dest-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: rgba(155, 92, 255, 0.4);
+    box-shadow:
+      0 20px 45px rgba(0, 0, 0, 0.6),
+      0 0 30px rgba(155, 92, 255, 0.2);
+  }
+
+  .card-photo {
+    position: absolute;
+    inset: 0;
+  }
+
+  .card-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.6s ease;
+  }
+
+  .dest-card:hover .card-photo img {
+    transform: scale(1.08);
+  }
+
+  .card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(5, 8, 22, 0.98) 5%,
+      rgba(5, 8, 22, 0.72) 45%,
+      rgba(5, 8, 22, 0.15) 100%
+    );
+  }
+
+  .flag {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    z-index: 3;
+  }
+
+  .flag img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .card-content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    padding: 28px;
+  }
+
+  .card-content h3 {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -2px;
+    margin-bottom: 12px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+  }
+
+  .card-content p {
+    color: #d7d7d7;
+    line-height: 1.8;
+    font-size: 15px;
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+
+  .card-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 18px;
+    border-radius: 999px;
+    background: rgba(155, 92, 255, 0.18);
+    border: 1px solid rgba(155, 92, 255, 0.35);
+    color: #d8c2ff;
+    transition: 0.3s;
+  }
+
+  .dest-card:hover .card-btn {
+    background: #9b5cff;
+    color: white;
+  }
+
+  /* =========================================
+   RESPONSIVO
+========================================= */
+
+  @media (max-width: 1200px) {
+    .cards-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 700px) {
+    .cards-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .page-header h2 {
+      font-size: 48px;
+    }
+  }
+</style>
   </head>
 
   <body>
@@ -484,50 +316,7 @@
 
     <div class="overlay"></div>
 
-    <!-- SIDEBAR -->
-
-    <aside class="sidebar">
-      <div class="logo">
-        <i class="fa-solid fa-plane"></i>
-      </div>
-
       <p class="menu-title">Destinos</p>
-
-      <div class="countries">
-        <a href="suica.html" class="country">
-          <img src="https://flagcdn.com/w80/ch.png" />
-          <span>Suíça</span>
-        </a>
-
-        <a href="franca.html" class="country">
-          <img src="https://flagcdn.com/w80/fr.png" />
-          <span>França</span>
-        </a>
-
-        <a href="gi.html" class="country">
-          <img src="https://flagcdn.com/w80/jp.png" />
-          <span>Japão</span>
-        </a>
-
-        <a href="leo.html" class="country">
-          <img src="https://flagcdn.com/w80/au.png" />
-          <span>Austrália</span>
-        </a>
-
-        <a href="china.html" class="country">
-          <img src="https://flagcdn.com/w80/cn.png" />
-          <span>China</span>
-        </a>
-
-        <a href="grecia.html" class="country">
-          <img src="https://flagcdn.com/w80/gr.png" />
-          <span>Grécia</span>
-        </a>
-      </div>
-
-     
-        </a>
-      </div>
     </aside>
 
     <!-- MAIN -->
@@ -539,8 +328,8 @@
       </nav>
 
       <div class="page-header">
-        <h2>Explore o Mundo</h2>
-        <p>Escolha um destino e descubra experiências inesquecíveis</p>
+        <h2>Explore nossos destinos</h2>
+        <p>Escolha um destino, descubra e se aventure em nossos sonhos </p>
       </div>
 
       <!-- GRID -->
@@ -548,10 +337,10 @@
       <div class="cards-grid">
         <!-- SUÍÇA -->
 
-        <a href="suica.html" class="dest-card">
+        <a href="./favalli.html" class="dest-card">
           <div class="card-photo">
             <img
-              src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=900&q=80&auto=format&fit=crop"
+              src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcRqTG2SywmEB32A0CGQe3aARPMrPYt3nUUnl1QCYXhPjSV8anisCDl17ZJHzlt2QSHVucrSZIdRV83UWvKKQOKLF38&s=19"
             />
           </div>
 
@@ -576,7 +365,7 @@
 
         <!-- FRANÇA -->
 
-        <a href="franca.html" class="dest-card">
+        <a href="./tatah.html" class="dest-card">
           <div class="card-photo">
             <img
               src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=900&q=80&auto=format&fit=crop"
@@ -604,7 +393,7 @@
 
         <!-- JAPÃO -->
 
-        <a href="japao.html" class="dest-card">
+        <a href="gi.html" class="dest-card">
           <div class="card-photo">
             <img
               src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=900&q=80&auto=format&fit=crop"
@@ -632,7 +421,7 @@
 
         <!-- AUSTRÁLIA -->
 
-        <a href="australia.html" class="dest-card">
+        <a href="leo.html" class="dest-card">
           <div class="card-photo">
             <img
               src="https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=900&q=80&auto=format&fit=crop"
@@ -658,7 +447,7 @@
 
         <!-- CHINA -->
 
-        <a href="china.html" class="dest-card">
+        <a href="sato.html" class="dest-card">
           <div class="card-photo">
             <img
               src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=900&q=80&auto=format&fit=crop"
@@ -684,25 +473,23 @@
           </div>
         </a>
 
-        
-
         <!-- GRÉCIA -->
 
-        <a href="grecia.html" class="dest-card">
+        <a href="ge.html" class="dest-card">
           <div class="card-photo">
             <img
-              src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=900&q=80&auto=format&fit=crop"
+              src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcTlHGR_CPYaDXFpz2GxlArQwS93m1aW8uuQLHg2vhNxMQCUpew8CGOumDroP3_RTKqnYf4k0aXq0uEojv-Zt-jSwwM&s=19"
             />
           </div>
 
           <div class="card-overlay"></div>
 
           <div class="flag">
-            <img src="https://flagcdn.com/w80/gr.png" />
+            <img src="https://plus.unsplash.com/premium_photo-1674591172352-0af9308f0dac?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
           </div>
 
           <div class="card-content">
-            <h3>Grécia</h3>
+            <h3>Canadá</h3>
             <p>
               Ilhas paradisíacas, mar azul-turquesa e muita história antiga.
             </p>

@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Início | Viagem dos Sonhos</title>
+
+    <!-- FONTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ICONS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: #050816;
+        color: white;
+        overflow-x: hidden;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Outfit", sans-serif;
+      }
+
+      a {
+        text-decoration: none;
+        color: white;
+      }
+
+      /* BACKGROUND */
+
+      .background {
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+      }
+
+      .background img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(20%);
+      }
+
+      .overlay {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+
+        background: linear-gradient(
+          90deg,
+          rgba(2, 5, 20, 0.95) 15%,
+          rgba(2, 5, 20, 0.75) 50%,
+          rgba(2, 5, 20, 0.4) 100%
+        );
+      }
+
+      /* SIDEBAR */
+
+      .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+
+        width: 250px;
+        height: 100vh;
+
+        padding: 28px 22px;
+
+        background: rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(12px);
+
+        border-right: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 42px;
+      }
+
+      .logo i {
+        font-size: 28px;
+        color: #9b5cff;
+      }
+
+      .menu-title {
+        color: #bcbcbc;
+        margin-bottom: 18px;
+        font-size: 14px;
+      }
+
+      .countries {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .country {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 14px;
+        border-radius: 16px;
+        transition: 0.3s;
+      }
+
+      .country:hover {
+        background: rgba(155, 92, 255, 0.15);
+      }
+
+      .country img {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+      }
+
+      /* MAIN */
+
+      .main {
+        margin-left: 250px;
+        padding: 35px 40px;
+      }
+
+      /* NAVBAR */
+
+      .navbar {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+        margin-bottom: 60px;
+      }
+
+      .navbar a {
+        position: relative;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .navbar a.active,
+      .navbar a:hover {
+        color: white;
+      }
+
+      .navbar a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+        width: 0%;
+        height: 2px;
+        background: #9b5cff;
+        transition: 0.3s;
+      }
+
+      .navbar a:hover::after,
+      .navbar a.active::after {
+        width: 100%;
+      }
+
+      /* HERO */
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 30px;
+        align-items: center;
+        margin-bottom: 40px;
+      }
+
+      .hero-text h1 {
+        font-size: 82px;
+        line-height: 0.95;
+        margin-bottom: 20px;
+
+        background: linear-gradient(135deg, white 35%, #9b5cff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .hero-text p {
+        font-size: 18px;
+        color: #cfcfcf;
+        line-height: 1.8;
+        margin-bottom: 30px;
+        max-width: 600px;
+      }
+
+      .hero-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px 26px;
+        border-radius: 999px;
+        background: #9b5cff;
+        font-weight: 600;
+        transition: 0.3s;
+      }
+
+      .hero-btn:hover {
+        transform: translateY(-4px);
+        background: #ac7dff;
+      }
+
+      .hero-image {
+        height: 500px;
+        border-radius: 30px;
+        overflow: hidden;
+      }
+
+      .hero-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* STATS */
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+        margin-top: 40px;
+      }
+
+      .stat-card {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(12px);
+        padding: 28px;
+        border-radius: 24px;
+      }
+
+      .stat-card i {
+        font-size: 22px;
+        color: #9b5cff;
+        margin-bottom: 14px;
+      }
+
+      .stat-card h3 {
+        font-size: 36px;
+        margin-bottom: 8px;
+      }
+
+      .stat-card p {
+        color: #bcbcbc;
+      }
+
+      /* FEATURED */
+
+      .section-title {
+        font-size: 42px;
+        margin: 60px 0 25px;
+      }
+
+      .featured-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      .featured-card {
+        position: relative;
+        height: 260px;
+        border-radius: 25px;
+        overflow: hidden;
+      }
+
+      .featured-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .featured-card .overlay-card {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.9),
+          rgba(0, 0, 0, 0.2)
+        );
+      }
+
+      .featured-card h4 {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        font-size: 28px;
+        z-index: 2;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="background">
+      <img
+        src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1800&q=80&auto=format&fit=crop"
+      />
+    </div>
+
+    <div class="overlay"></div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="logo">
+        <i class="fa-solid fa-plane"></i>
+      </div>
+
+      <p class="menu-title">Destinos</p>
+
+      <div class="countries">
+        <a href="ge.html" class="country">
+          <img
+            src="https://plus.unsplash.com/premium_photo-1674591172352-0af9308f0dac?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          />
+          <span>Canadá </span>
+        </a>
+
+        <a href="favalli.html" class="country">
+          <img src="https://flagcdn.com/w80/ch.png" />
+          <span>Suíça</span>
+        </a>
+
+        <a href="tatah.html" class="country">
+          <img src="https://flagcdn.com/w80/fr.png" />
+          <span>França</span>
+        </a>
+
+        <a href="gi.html" class="country">
+          <img src="https://flagcdn.com/w80/jp.png" />
+          <span>Japão</span>
+        </a>
+
+        <a href="tatah.html" class="country">
+          <img src="https://flagcdn.com/w80/au.png" />
+          <span>Austrália</span>
+
+          <a href="sato.html" class="country">
+          <img src="https://flagcdn.com/w80/cn.png" />
+          <span>China</span>
+
+        </a>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+      <nav class="navbar">
+        <a href="index.html" class="active">Início</a>
+        <a href="destinos.html">Destinos</a>
+      </nav>
+
+      <section class="hero">
+        <div class="hero-text">
+          <h1>Conheça nossas viajens dos sonhos</h1>
+          <p>Descubra países incríveis escolhidos por nós</p>
+
+          <a href="./pages/destinos.html" class="hero-btn">
+            Explorar destinos
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="hero-image">
+          <img
+            src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1000"
+          />
+        </div>
+      </section>
+
+      <section class="stats">
+        <div class="stat-card">
+          <i class="fa-solid fa-earth-americas"></i>
+          <h3>6+</h3>
+          <p>Países disponíveis</p>
+        </div>
+
+        <div class="stat-card">
+          <i class="fa-solid fa-camera"></i>
+          <h3>30+</h3>
+          <p>Pontos turísticos</p>
+        </div>
+
+        <div class="stat-card">
+          <i class="fa-solid fa-plane-departure"></i>
+          <h3>100%</h3>
+          <p>Experiência visual</p>
+        </div>
+
+        <div class="stat-card">
+          <i class="fa-solid fa-star"></i>
+          <h3>Os melhores</h3>
+          <p>Destinos selecionados</p>
+        </div>
+      </section>
+
+      <h2 class="section-title">Em nosso destaque</h2>
+
+      <div class="featured-grid">
+        <a href="./pages/gi.html" class="featured-card">
+          <img
+            src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e"
+          />
+          <div class="overlay-card"></div>
+          <h4>Japão</h4>
+        </a>
+
+        <a href="./pages/tatah.html" class="featured-card">
+          <img
+            src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34"
+          />
+          <div class="overlay-card"></div>
+          <h4>França</h4>
+        </a>
+
+        <a href="./pages/ge.html" class="featured-card">
+          <img
+            src="https://imaginanaviagem.com/wp-content/uploads/2016/06/Capa-O-que-fazer-no-Canada%CC%81-1263x560.jpg"
+          />
+          <div class="overlay-card"></div>
+          <h4>Canadá</h4>
+        </a>
+      </div>
+    </main>
+  </body>
+</html>
