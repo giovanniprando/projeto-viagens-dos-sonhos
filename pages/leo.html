@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Austrália | Viagem dos Sonhos</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: #050816;
+        color: white;
+        overflow-x: hidden;
+      }
+
+      a {
+        text-decoration: none;
+        color: white;
+      }
+
+      .background {
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+      }
+
+      .background img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(25%);
+      }
+
+      .overlay {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background: linear-gradient(
+          90deg,
+          rgba(2, 5, 20, 0.96) 15%,
+          rgba(2, 5, 20, 0.75) 45%,
+          rgba(2, 5, 20, 0.4) 100%
+        );
+      }
+
+      .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 250px;
+        height: 100vh;
+        padding: 28px 22px;
+        background: rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(12px);
+        border-right: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 42px;
+      }
+
+      .logo i {
+        font-size: 28px;
+        color: #9b5cff;
+      }
+
+      .menu-title {
+        color: #bcbcbc;
+        margin-bottom: 18px;
+        font-size: 15px;
+      }
+
+      .countries {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .country {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 15px;
+        border-radius: 14px;
+        transition: 0.3s;
+      }
+
+      .country:hover {
+        background: rgba(155, 92, 255, 0.15);
+      }
+
+      .country img {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .main {
+        margin-left: 250px;
+        padding: 30px 34px;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+        margin-bottom: 35px;
+      }
+
+      .navbar a {
+        font-size: 17px;
+        position: relative;
+      }
+
+      .navbar a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+        width: 0%;
+        height: 2px;
+        background: #9b5cff;
+        transition: 0.3s;
+      }
+
+      .navbar a:hover::after {
+        width: 100%;
+      }
+
+      .container {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 18px;
+      }
+
+      .hero {
+        position: relative;
+        height: 420px;
+        border-radius: 28px;
+        overflow: hidden;
+        padding: 34px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        background: url("https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1974&auto=format&fit=crop");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.82));
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+      }
+
+      .title {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        margin-bottom: 18px;
+      }
+
+      .title img {
+        width: 86px;
+        height: 86px;
+        border-radius: 18px;
+      }
+
+      .title h2 {
+        font-size: 74px;
+      }
+
+      .hero p {
+        max-width: 620px;
+        font-size: 23px;
+        line-height: 1.6;
+        color: #dddddd;
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .mini-card,
+      .section-card {
+        background: rgba(0, 0, 0, 0.28);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 20px;
+        padding: 18px;
+      }
+
+      .mini-card i,
+      .section-title i {
+        color: #9b5cff;
+      }
+
+      .side-column {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .section-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+
+      .section-card-content {
+        display: flex;
+        gap: 20px;
+      }
+
+      .section-card img {
+        width: 380px;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 22px;
+      }
+
+      .lower-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr 1fr;
+        gap: 18px;
+        margin-top: 18px;
+      }
+
+      .reason img {
+        width: 100%;
+        height: 230px;
+        object-fit: cover;
+        border-radius: 22px;
+        margin-top: 20px;
+      }
+
+      .tourism-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 14px;
+      }
+
+      .tour-card {
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 18px;
+        overflow: hidden;
+      }
+
+      .tour-card img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+      }
+
+      .tour-content {
+        padding: 14px;
+      }
+
+      .links {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .link-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 16px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.03);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="background">
+      <img
+        src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1974&auto=format&fit=crop"
+      />
+    </div>
+
+    <div class="overlay"></div>
+
+    <aside class="sidebar">
+      <div class="logo">
+        <i class="fa-solid fa-plane"></i>
+      </div>
+
+      <p class="menu-title">Destinos</p>
+
+      <div class="countries">
+        <a href="ge.html" class="country"
+          ><img src="https://flagcdn.com/w80/ca.png" />Canadá</a
+        >
+        <a href="favalli.html" class="country"
+          ><img src="https://flagcdn.com/w80/ch.png" />Suíça</a
+        >
+        <a href="tatah.html" class="country"
+          ><img src="https://flagcdn.com/w80/fr.png" />França</a
+        >
+        <a href="gi.html" class="country"
+          ><img src="https://flagcdn.com/w80/jp.png" />Japão</a
+        >
+        <a href="leo.html" class="country"
+          ><img src="https://flagcdn.com/w80/au.png" />Austrália</a
+        >
+        <a href="sato.html" class="country"
+          ><img src="https://flagcdn.com/w80/cn.png" />China</a
+        >
+      </div>
+    </aside>
+
+    <main class="main">
+      <nav class="navbar">
+        <a href="index.html">Início</a>
+        <a href="destinos.html">Destinos</a>
+      </nav>
+
+      <div class="container">
+        <div>
+          <section class="hero">
+            <div class="hero-content">
+              <div class="title">
+                <img src="https://flagcdn.com/w80/au.png" />
+                <h2>Austrália</h2>
+              </div>
+
+              <p>
+                Natureza selvagem, praias deslumbrantes, vida selvagem única e
+                cidades vibrantes à beira-mar.
+              </p>
+            </div>
+          </section>
+
+          <div class="info-grid">
+            <div class="mini-card">
+              <i class="fa-solid fa-earth-americas"></i>
+              <h4>Idioma</h4>
+              <p>Inglês</p>
+            </div>
+            <div class="mini-card">
+              <i class="fa-solid fa-coins"></i>
+              <h4>Moeda</h4>
+              <p>Dólar Australiano (AUD)</p>
+            </div>
+            <div class="mini-card">
+              <i class="fa-regular fa-calendar"></i>
+              <h4>Melhor época</h4>
+              <p>Setembro a Novembro</p>
+            </div>
+            <div class="mini-card">
+              <i class="fa-regular fa-clock"></i>
+              <h4>Fuso horário</h4>
+              <p>UTC +10</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="side-column">
+          <section class="section-card">
+            <div class="section-title">
+              <i class="fa-solid fa-location-dot"></i>
+              <h3>Sobre o lugar</h3>
+            </div>
+            <div class="section-card-content">
+              <p>
+                A Austrália é famosa por sua biodiversidade única, praias
+                paradisíacas, cidades modernas e paisagens naturais incríveis.
+              </p>
+              <img
+                src="https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?q=80&w=1974&auto=format&fit=crop"
+              />
+            </div>
+          </section>
+
+          <section class="section-card">
+            <div class="section-title">
+              <i class="fa-regular fa-file-lines"></i>
+              <h3>Descrição do destino</h3>
+            </div>
+            <div class="section-card-content">
+              <p>
+                Da Grande Barreira de Coral ao Uluru, a Austrália mistura
+                aventura, natureza e cultura em um destino inesquecível.
+              </p>
+              <img
+                src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1974&auto=format&fit=crop"
+              />
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
